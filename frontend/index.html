@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMI Rechner</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Hier können zusätzliche CSS-Stile hinzugefügt werden, falls erforderlich */
+    </style>
+</head>
+
+<body>
+    <h1>BMI Rechner</h1>
+
+    <div>
+        <label for="weight">Gewicht (in kg):</label>
+        <input type="number" id="weight" oninput="calculateBMI()">
+        <span id="show_weight"></span>
+    </div>
+
+    <div>
+        <label for="height">Größe (in cm):</label>
+        <input type="number" id="height" oninput="calculateBMI()">
+        <span id="show_height"></span>
+    </div>
+
+    <div id="result"></div>
+
+    <script src="main.js"></script>
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value) / 100; // Umrechnung in Meter
+
+            if (weight > 0 && height > 0) {
+                var bmi = weight / (height * height);
+                document.getElementById("result").innerHTML = "BMI: " + bmi.toFixed(2);
+            } else {
+                document.getElementById("result").innerHTML = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
